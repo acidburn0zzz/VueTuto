@@ -16,24 +16,27 @@
 
   <div id="app">
 
-    <button type="submit" @click="updateCount">
-      Increment Counter: {{ count }}
-    </button>
+    <my-counter heading="Likes"></my-counter>
+    <my-counter heading="Dislikes"></my-counter>
 
   </div>
 
+  <template id="counter-template">
+    <h1>{{ heading }}</h1>
+    <button @click="count += 1">{{ count }}</button>
+  </template>
+
 <script src="bower_components/vue/dist/vue.js"></script>
 <script>
-  new Vue({
-    el: '#app',
-    data: {
-      count: 0
-    },
-    methods: {
-      updateCount: function () {
-        this.count += 1;
-      }
+  Vue.component('my-counter', {
+    template: '#counter-template',
+    props: ['heading'],
+    data: function () {
+      return { count: 0 };
     }
+  });
+  new Vue({
+    el: '#app'
   })
 </script>
 </body>
