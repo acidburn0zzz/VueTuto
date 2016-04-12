@@ -3,29 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Vue.js</title>
+  <style>
+    .error {
+      color: red;
+    }
+    textarea {
+      display: inline;
+    }
+  </style>
 </head>
 <body>
 
   <div id="app">
 
-    <h1>
-      {{ message }}
-    </h1>
+    <form>
+      <span class="error" v-show="!message">You must enter a message</span>
+  
+      <textarea v-model="message" name="" id="" cols="30" rows="10"></textarea>
 
-    <p>
-      <input v-model="message">
-    </p>
+      <button type="submit" v-show="message">Submit</button>
+    </form>
 
   </div>
-
-
 
 <script src="bower_components/vue/dist/vue.js"></script>
 <script>
   new Vue({
     el: '#app',
     data: {
-      message: 'Hello World'
+      message: ''
     }
   })
 </script>
