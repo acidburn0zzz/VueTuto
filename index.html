@@ -16,12 +16,8 @@
 
   <div id="app">
 
-    <form>
-      <span class="error" v-show="!message">You must enter a message</span>
-  
-      <textarea v-model="message" name="" id="" cols="30" rows="10"></textarea>
-
-      <button type="submit" v-show="message">Submit</button>
+    <form action="done.html" v-on:submit="handleIt">
+      <button type="submit">Submit Me!</button>
     </form>
 
   </div>
@@ -30,8 +26,10 @@
 <script>
   new Vue({
     el: '#app',
-    data: {
-      message: ''
+    methods: {
+      handleIt: function () {
+        alert('Handled');
+      }
     }
   })
 </script>
