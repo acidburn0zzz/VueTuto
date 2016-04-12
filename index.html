@@ -16,27 +16,28 @@
 
   <div id="app">
 
-    <my-counter heading="Likes"></my-counter>
-    <my-counter heading="Dislikes"></my-counter>
+    <h1>Skill: {{ skill }}</h1>
+    <input type="text" v-model="points">
 
   </div>
 
-  <template id="counter-template">
-    <h1>{{ heading }}</h1>
-    <button @click="count += 1">{{ count }}</button>
-  </template>
-
 <script src="bower_components/vue/dist/vue.js"></script>
 <script>
-  Vue.component('my-counter', {
-    template: '#counter-template',
-    props: ['heading'],
-    data: function () {
-      return { count: 0 };
-    }
-  });
   new Vue({
-    el: '#app'
+    el: 'body',
+
+    data: {
+      points: 50
+    },
+
+    computed: {
+      skill: function () {
+        if (this.points <= 100) {
+          return 'Beginner';
+        }
+          return 'Advanced';
+      }
+    }
   })
 </script>
 </body>
