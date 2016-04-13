@@ -13,6 +13,7 @@
     <ul>
       <li :class="{ 'completed': task.completed }"
           v-for="task in tasks"
+          @click="toggleCompleteFor(task)"
       >
           {{ task.body }}
       </li>
