@@ -3,15 +3,15 @@ Vue.component('tasks', {
   props: ['list'],
   computed: {
     remaining: function() {
-      var vm = this;
-      return this.list.filter(function(task) {
-          return ! vm.isCompleted(task);
-      }).length;
+      return this.list.filter(this.inProgress).length;
     }
   },
   methods: {
     isCompleted: function(task) {
         return task.completed;
+    },
+    inProgress: function(task) {
+        return ! this.isCompleted(task);
     }
   }
 });
