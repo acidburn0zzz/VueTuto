@@ -8,31 +8,31 @@
 <body>
 
   <div id="app">
-    <pre>
-      {{ $data |json }}
-    </pre>
 
     <div v-for="plan in plans">
-      <plan :plan="plan" :active.sync="active"></plan>
+      <plan :plan="plan" :active.sync="active" inline-template>
+        <div>
+          <span class="plan-name">{{ plan.name }}</span>
+
+          <span class="plan-price">{{ plan.price }}/month</span>
+
+          <button @click="setActivePlan"
+                  v-show="plan.name !== active.name"
+          >
+            {{ isUpgrade ? 'Upgrade' : 'Downgrade' }}
+          </button>
+
+          <span v-else>
+            Selected
+          </span>
+
+        </div>
+
+      </plan>
     </div>
 
     <template id="plan-template">
-      <div>
-        <span class="plan-name">{{ plan.name }}</span>
 
-        <span class="plan-price">{{ plan.price }}/month</span>
-
-        <button @click="setActivePlan"
-                v-show="plan.name !== active.name"
-        >
-          {{ isUpgrade ? 'Upgrade' : 'Downgrade' }}
-        </button>
-
-        <span v-else>
-          Selected
-        </span>
-
-      </div>
     </template>
   </div>
 
@@ -53,7 +53,7 @@
 
     components: {
       plan: {
-          template: '#plan-template',
+          
 
           props: ['plan', 'active'],
 
