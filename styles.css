@@ -1,0 +1,4 @@
+.plan-name, .plan-price {
+    display: inline-block;
+    width: 100px;
+}

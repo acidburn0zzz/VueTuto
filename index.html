@@ -3,41 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Vue.js</title>
-  <style>
-    .error {
-      color: red;
-    }
-    textarea {
-      display: inline;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <div id="app">
 
-    <h1>{{ fullName }}</h1>
-    <input type="text" v-model="first" placeholder="First name">
-    <input type="text" v-model="last" placeholder="Last name">
+    <div v-for="plan in plans">
+      <plan :plan="plan"></plan>
+    </div>
 
+    <template id="plan-template">
+      <span class="plan-name">{{ plan.name }}</span>
+      <span class="plan-price">{{ plan.price }}/month</span>
+      <button>Upgrade</button>
+    </template>
   </div>
 
 <script src="bower_components/vue/dist/vue.js"></script>
 <script>
   new Vue({
-    el: 'body',
-
+    el: '#app',
     data: {
-      first: 'Stéphane',
-      last: 'Bullier'
+      plans: [
+        { name: 'Enterprise', price: 100 },
+        { name: 'Pro', price: 50 },
+        { name: 'Personal', price: 10 },
+        { name: 'Free', price: 0 }
+      ]
     },
-
-    computed: {
-      fullName: function () {
-        return this.first + ' ' + this.last;
+    components: {
+      plan: {
+          template: '#plan-template',
+          props: ['plan']
       }
     }
-  })
+  });
 </script>
 </body>
 </html>
