@@ -16,8 +16,9 @@
 
   <div id="app">
 
-    <h1>Skill: {{ skill }}</h1>
-    <input type="text" v-model="points">
+    <h1>{{ fullName }}</h1>
+    <input type="text" v-model="first" placeholder="First name">
+    <input type="text" v-model="last" placeholder="Last name">
 
   </div>
 
@@ -27,17 +28,22 @@
     el: 'body',
 
     data: {
-      points: 50
+      first: 'Stéphane',
+      last: 'Bullier',
+      fullName: 'Stéphane Bullier'
     },
 
-    computed: {
-      skill: function () {
-        if (this.points <= 100) {
-          return 'Beginner';
-        }
-          return 'Advanced';
+    watch: {
+      first: function (first) {
+        this.fullName = first + ' ' + this.last;
+      },
+      last: function (last) {
+        this.fullName = this.first + ' ' + last;
       }
+
+
     }
+
   })
 </script>
 </body>
