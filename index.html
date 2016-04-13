@@ -2,28 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vue.js</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>List rendering</title>
+  <style>
+    .completed { text-decoration: line-through; }
+  </style>
 </head>
 <body>
 
-<!-- This is my view -->
-<div id="example-2">
-  <p v-if="greeting">Hello!</p>
-</div>
+  <div id="app">
+    <ul>
+      <li :class="{ 'completed': task.completed }"
+          v-for="task in tasks"
+      >
+          {{ task.body }}
+      </li>
+    </ul>
+  </div>
+
 
 <script src="bower_components/vue/dist/vue.js"></script>
-<script>
-
-var exampleVM2 = new Vue({
-  el: "#example-2",
-  data: {
-    greeting: true
-  }
-})
-
-
-
-</script>
+<script src="main.js"></script>
 </body>
 </html>
