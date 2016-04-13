@@ -9,16 +9,21 @@
 </head>
 <body>
 
+
   <div id="app">
+    <tasks :list="tasks"></tasks>
+  </div>
+
+  <template id="tasks-template">
     <ul>
       <li :class="{ 'completed': task.completed }"
-          v-for="task in tasks"
+          v-for="task in list"
           @click="task.completed = ! task.completed"
       >
           {{ task.body }}
       </li>
     </ul>
-  </div>
+  </template>
 
 
 <script src="bower_components/vue/dist/vue.js"></script>

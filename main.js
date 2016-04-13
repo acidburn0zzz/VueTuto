@@ -1,6 +1,8 @@
-/**
- * Created by stephane on 13/04/16.
- */
+Vue.component('tasks', {
+  props: ['list'],
+  template: '#tasks-template'
+});
+
 new Vue({
     el: '#app',
 
