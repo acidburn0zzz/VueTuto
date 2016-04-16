@@ -9,10 +9,5 @@ var vm = new Vue({
   }
 });
 
-setTimeout(function(){
-  vm.personnes = vm.personnes.concat([
-    {nom: "Claret", prenom: "Marcel"},
-    {nom: "Verlou", prenom: "Gustave"}
-  ]);
-}, 2000);
-setTimeout(function(){vm.personnes = vm.personnes.slice(1, 4);}, 4000);
+lg = vm.personnes.length;
+vm.personnes.$set(1, {nom: "Claret", prenom: "Marcel"});
