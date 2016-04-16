@@ -2,35 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>List rendering</title>
-  <style>
-    .completed { text-decoration: line-through; }
-  </style>
+  <title>Tuto</title>
+
 </head>
 <body>
 
+  <ul id="tuto">
+    <li v-for="value in items">
+      {{ value }}
+    </li>
+  </ul>
 
-  <div id="app">
-    <tasks :list="tasks"></tasks>
-  </div>
-
-  <template id="tasks-template">
-    <h1>
-      My tasks
-      <span v-show="remaining">({{ remaining }})</span>
-    </h1>
-    <ul v-show="list.length">
-      <li :class="{ 'completed': task.completed }"
-          v-for="task in list"
-          @click="task.completed = ! task.completed"
-      >
-          {{ task.body }}
-          <strong @click="deleteTask(task)">x</strong>
-      </li>
-    </ul>
-    <p v-else>No task yet!</p>
-    <button @click="clearCompleted">Clear completed</button>
-  </template>
 
 
 <script src="bower_components/vue/dist/vue.js"></script>
