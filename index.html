@@ -1,39 +1,75 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Tuto</title>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test vue.js</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <title>Gestion utilisateurs</title>
+    <style>
+      .container {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
 
-</head>
-<body>
+    <div class="container" id="app">
 
-  <table>
-    <caption>Personnes</caption>
-    <thead>
-      <tr>
-        <th>
-          Nom
-        </th>
-        <th>
-          Prénom
-        </th>
-      </tr>
-    </thead>
-    <tbody id="app">
-      <tr v-for="personne in personnes">
-        <td>
-          {{ personne.nom }}
-        </td>
-        <td>
-          {{ personne.prenom }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+      <div class="panel panel-primary" v-show="personnes.length">
+        <div class="panel-heading">Personnes actives</div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th class="col-sm-5">Nom</th>
+              <th class="col-sm-5">Prénom</th>
+              <th class="col-sm-2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="personne in personnes">
+              <td>{{ personne.nom }}</td>
+              <td>{{ personne.prenom }}</td>
+              <td><button class="btn btn-warning btn-block" @click="erase($index)">Poubelle</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="panel-footer">
+          <button class="button btn btn-xs btn-warning" @click="eraseAll">Tout à la poubelle</button>
+        </div>
+      </div>
 
+      <div class="panel panel-danger" v-show="trash.length">
+        <div class="panel-heading">Trash</div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th class="col-sm-4">Nom</th>
+              <th class="col-sm-4">Prénom</th>
+              <th class="col-sm-2"></th>
+              <th class="col-sm-2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="personne in trash">
+              <td>{{ personne.nom }}</td>
+              <td>{{ personne.prenom }}</td>
+              <td><button class="btn btn-success btn-block" @click="restore($index)">Rétablir</button></td>
+              <td><button class="btn btn-danger btn-block" @click="Delete($index)">Supprimer</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="panel-footer">
+          <div class="btn-group">
+            <button class="button btn btn-xs btn-success" @click="restoreAll">Tout rétablir</button>
+            <button class="button btn btn-xs btn-danger" @click="deleteAll">Tout supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-
-<script src="bower_components/vue/dist/vue.js"></script>
-<script src="main.js"></script>
-</body>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
