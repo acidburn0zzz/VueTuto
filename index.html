@@ -8,8 +8,8 @@
 <body>
 
   <ul id="tuto">
-    <li v-for="value in items">
-      {{ $index }} : {{ value }}
+    <li v-for="value in items" @click="getFruit($index)">
+      {{ value }}
     </li>
   </ul>
 
