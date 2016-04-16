@@ -8,7 +8,9 @@ var vm = new Vue({
       {nom: "Martin", prenom: "Denis"},
       {nom: "Torlet", prenom: "Arthur"},
     ],
-    trash: []
+    trash: [],
+    inputLastName: '',
+    inputFirstName: ''
   },
   methods: {
     erase (index) {
@@ -36,8 +38,19 @@ var vm = new Vue({
     },
     deleteAll () {
       this.trash = [];
+    },
+    add () {
+      this.personnes.push({nom: this.inputLastName, prenom: this.inputFirstName});
+      this.inputLastName = this.inputFirstName = '';
+      this.personnes.sort(order);
+    },
+    modifier (index) {
+      this.$els.modif.focus();
+      this.inputLastName = this.personnes[index].LastName;
+      this.inputFirstName = this.personnes[index].FirstName;
+      this.personnes.splice(index, 1);
     }
   }
 });
 
-var order = function (a, b) { return (a.nom > b.nom) };
+var order = function (a, b) { return (a.nom.toUpperCase() > b.nom.toUpperCase())};
