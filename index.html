@@ -7,11 +7,29 @@
 </head>
 <body>
 
-  <ul id="tuto">
-    <li v-for="value in items" @click="getFruit($index)">
-      {{ value }}
-    </li>
-  </ul>
+  <table>
+    <caption>Personnes</caption>
+    <thead>
+      <tr>
+        <th>
+          Nom
+        </th>
+        <th>
+          Prénom
+        </th>
+      </tr>
+    </thead>
+    <tbody id="app">
+      <tr v-for="personne in personnes">
+        <td>
+          {{ personne.nom }}
+        </td>
+        <td>
+          {{ personne.prenom }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 
 
