@@ -11,63 +11,19 @@
       .container {
         margin-top: 20px;
       }
+
     </style>
   </head>
   <body>
 
-    <div class="container" id="app">
-
-      <div class="panel panel-primary" v-show="personnes.length">
-        <div class="panel-heading">Personnes actives</div>
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th class="col-sm-5">Nom</th>
-              <th class="col-sm-5">Prénom</th>
-              <th class="col-sm-2"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="personne in personnes">
-              <td>{{ personne.nom }}</td>
-              <td>{{ personne.prenom }}</td>
-              <td><button class="btn btn-warning btn-block" @click="erase($index)">Poubelle</button></td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="panel-footer">
-          <button class="button btn btn-xs btn-warning" @click="eraseAll">Tout à la poubelle</button>
-        </div>
-      </div>
-
-      <div class="panel panel-danger" v-show="trash.length">
-        <div class="panel-heading">Trash</div>
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th class="col-sm-4">Nom</th>
-              <th class="col-sm-4">Prénom</th>
-              <th class="col-sm-2"></th>
-              <th class="col-sm-2"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="personne in trash">
-              <td>{{ personne.nom }}</td>
-              <td>{{ personne.prenom }}</td>
-              <td><button class="btn btn-success btn-block" @click="restore($index)">Rétablir</button></td>
-              <td><button class="btn btn-danger btn-block" @click="Delete($index)">Supprimer</button></td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="panel-footer">
-          <div class="btn-group">
-            <button class="button btn btn-xs btn-success" @click="restoreAll">Tout rétablir</button>
-            <button class="button btn btn-xs btn-danger" @click="deleteAll">Tout supprimer</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <form id="app">
+      <select class="form-control" v-model="choix" multiple>
+        <option v-for="option in options" :value="option.value">
+          {{ option.text }}
+        </option>
+      </select>
+      <p>On a choisi "{{ choix }}"</p>
+    </form>
 
     <script src="bower_components/vue/dist/vue.js"></script>
     <script src="main.js"></script>
